@@ -4,6 +4,7 @@ from .serializers import PostSerializer
 from .models import Post
 from rest_framework import generics
 from votes.serializers import ActivitySerializer, LikeSerializer, DownvoteSerializer
+from comments.serializers import CommentChildSerializer, CommentParentSerializer
 from votes.models import Vote
 from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType

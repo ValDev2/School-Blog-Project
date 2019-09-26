@@ -3,6 +3,8 @@ from multiselectfield import MultiSelectField
 from users.choices import INTERESTS_CHOICES
 from votes.models import Vote
 from users.models import User
+from comments.models import Comment
+
 from django.contrib.contenttypes.fields import GenericRelation
 
 
@@ -23,12 +25,20 @@ class Post(models.Model):
     )
     #return a QS of like instances
     activities = GenericRelation(Vote)
+    comments = GenericRelation(Comment)
 
     def __str__(self):
         return self.title
 
     def get_username(self):
         return self.user.email
+
+    def get_likes(self):
+        return self.activities.likes()
+
+    def get_comments(self):
+        return self.comments.filter_by_instance(instance=self)
+
 
     # ADD : get_like_history --> Get the history of users who liked that post
     # ADD : @property(downvotes) that count how many get_downvotes have been created for this post

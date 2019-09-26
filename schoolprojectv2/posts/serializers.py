@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from votes.serializers import ActivitySerializer, LikeSerializer, DownvoteSerializer
+from comments.serializers import CommentChildSerializer, CommentParentSerializer
 from .models import Post
 
 
@@ -10,6 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
     like_number = serializers.SerializerMethodField()
     downvotes = serializers.SerializerMethodField()
     downvotes_number = serializers.SerializerMethodField()
+    comments = serializers.SerializerMethodField()
 
 
     def create(self, validated_data):
@@ -34,6 +36,10 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_downvotes_number(self, obj):
         return obj.activities.downvotes().count()
+
+    def get_comments(self, obj):
+        qs = Comment.objects.filter_by_instance(instance=obj)
+        return CommentParentSerializer(qs, many=True).data
 
 
 
