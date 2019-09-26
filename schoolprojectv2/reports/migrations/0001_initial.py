@@ -16,14 +16,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Vote',
+            name='Report',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('activity_type', models.CharField(choices=[('F', 'Favorite'), ('L', 'Like'), ('D', 'Down vote')], max_length=1)),
-                ('datestamp', models.DateTimeField(auto_now_add=True)),
                 ('object_id', models.PositiveIntegerField()),
+                ('report_type', models.CharField(choices=[('SPAM', 'Spam'), ('NEGA', 'Negative Behavior'), ('RACI', 'Racist Behavior'), ('HARAS', 'Harassement Report'), ('UNNE', 'unnecessary / motiveless behavior')], default='UNNE', max_length=100)),
+                ('datestamp', models.DateTimeField(auto_now_add=True)),
                 ('content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contenttypes.ContentType')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('from_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
