@@ -27,5 +27,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_username(self):
+        return self.user.email
+
     # ADD : get_like_history --> Get the history of users who liked that post
     # ADD : @property(downvotes) that count how many get_downvotes have been created for this post

@@ -5,3 +5,11 @@ class isAuthenticatedOrReadOnly(BasePermission):
         if request.method in SAFE_METHODS:
             return True
         return request.user.is_authenticated
+
+class isAuthorOrReadOnly(BasePermission):
+    #If GET request, let the user in
+    def has_object_permission(self, request, view, obj):
+        if request.method in SAFE_METHODS:
+            return True
+        #If the user is not the author, deny access to put / delete / post
+        return obj.user == request.user

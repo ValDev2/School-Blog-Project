@@ -1,13 +1,16 @@
 from rest_framework import serializers
-from votes.serializers import ActivitySerializer
+from votes.serializers import ActivitySerializer, LikeSerializer, DownvoteSerializer
 from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    user_name = serializers.CharField(source="get_username", read_only=True)
     likes = serializers.SerializerMethodField()
     like_number = serializers.SerializerMethodField()
+    downvotes = serializers.SerializerMethodField()
     downvotes_number = serializers.SerializerMethodField()
+
 
     def create(self, validated_data):
         if self.is_valid():
@@ -21,14 +24,19 @@ class PostSerializer(serializers.ModelSerializer):
             return post
 
     def get_likes(self, obj):
-        return ActivitySerializer(obj.activities.filter(activity_type='L'), many=True).data
-
-    def get_downvotes_number(self, obj):
-        return obj.activities.filter(activity_type='D').count()
+        return LikeSerializer(obj.activities.likes(), many=True).data
 
     def get_like_number(self, obj):
-        return obj.activities.filter(activity_type='L').count()
+        return obj.activities.likes().count()
+
+    def get_downvotes(self, obj):
+        return DownvoteSerializer(obj.activities.downvotes(), many=True).data
+
+    def get_downvotes_number(self, obj):
+        return obj.activities.downvotes().count()
+
+
 
     class Meta:
         model = Post
-        fields = ('user', 'title', 'content', 'tags', 'like_number', 'downvotes_number', 'likes')
+        fields = ('id','user', 'user_name','title', 'content', 'tags', 'like_number', 'likes', 'downvotes', 'downvotes_number', )
