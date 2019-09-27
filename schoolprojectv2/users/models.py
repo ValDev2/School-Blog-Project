@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from profiles.models import Student, Teacher
+from comments.models import Comment
 from .choices import COLLEGES, INTERESTS_CHOICES, RANKING_CHOICES
 
 
@@ -139,6 +140,10 @@ class User(AbstractBaseUser):
     def get_friendrequest(self):
         fqs = FriendRequest.objects.filter(to_user=self.id)
         return fqs
+
+    def get_user_comments(self):
+        qs = Comment.objects.filter(user=self)
+        return qs
 
 
 @receiver(post_save, sender = User)
