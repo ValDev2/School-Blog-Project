@@ -37,11 +37,6 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.user.email} commented on {self.content_type} : '{self.content[:30]}'"
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> comments
     @property
     def is_parent(self):
         if self.parent is None:
