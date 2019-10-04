@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from votes.serializers import ActivitySerializer, LikeSerializer, DownvoteSerializer
+from comments.models import Comment
 from comments.serializers import CommentChildSerializer, CommentParentSerializer
 from .models import Post
 
@@ -12,7 +13,8 @@ class PostSerializer(serializers.ModelSerializer):
     downvotes = serializers.SerializerMethodField()
     downvotes_number = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
-
+    category_field = serializers.CharField(source="category_type", read_only=True)
+    category = serializers.CharField(source="category_name", read_only=True)
 
     def create(self, validated_data):
         if self.is_valid():
@@ -20,7 +22,6 @@ class PostSerializer(serializers.ModelSerializer):
                 user = self.context['request'].user,
                 title = self.validated_data['title'],
                 content = self.validated_data['content'],
-                tags = self.validated_data['tags']
             )
             post.save()
             return post
@@ -45,4 +46,4 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('id','user', 'user_name','title', 'content', 'tags', 'like_number', 'likes', 'downvotes', 'downvotes_number', )
+        fields = ('id','user', 'user_name','title', 'content', 'like_number', 'likes', 'downvotes', 'downvotes_number', 'comments', 'category_field', 'category' )

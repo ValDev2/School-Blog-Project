@@ -8,6 +8,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from profiles.models import Student, Teacher
 from comments.models import Comment
+from posts.models import Post
 from .choices import COLLEGES, INTERESTS_CHOICES, RANKING_CHOICES
 
 
@@ -145,6 +146,10 @@ class User(AbstractBaseUser):
         qs = Comment.objects.filter(user=self)
         return qs
 
+    def get_user_posts(self):
+        qs = Post.objects.filter(user=self)
+        return qs
+
 
 @receiver(post_save, sender = User)
 def create_profile(sender, instance, created, **kwargs):
@@ -153,18 +158,10 @@ def create_profile(sender, instance, created, **kwargs):
             if instance.is_student:
                 student = Student.objects.create(user=instance)
                 #Keeping track of user_profile changes
-                instance.profile_history.append({
-                    "type" : "Student",
-                    "datestamp" : student.datestamp
-                })
                 print("creation of instance STUDENT")
             elif instance.is_student:
                 teacher = Teacher.objects.create(user=instance)
                 #Keeping track of user_profile changes
-                instance.profile_history.append({
-                    "type" : "Teacher",
-                    "datestamp" : teacher.datestamp
-                })
                 print("Creation of instance Teacher ! ")
 
 #change user profile on update

@@ -4,8 +4,14 @@ from .serializers import PostSerializer
 from .models import Post
 from rest_framework import generics
 from votes.serializers import ActivitySerializer, LikeSerializer, DownvoteSerializer
-from comments.serializers import CommentChildSerializer, CommentParentSerializer
+from comments.serializers import (
+                                    CommentChildSerializer,
+                                    CommentParentSerializer,
+                                    CreateCommentSerializer,
+                                    CommentSerializer
+                                )
 from votes.models import Vote
+from comments.models import Comment
 from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 
@@ -42,7 +48,6 @@ class PostLikeDetail(generics.ListCreateAPIView):
         pk = self.kwargs.get(self.lookup_url_kwargs)
         post = get_object_or_404(Post, pk=pk)
         content_type = ContentType.objects.get_for_model(model=post)
-        print(f"pk = {pk}")
         return Vote.objects.filter(activity_type='L', object_id = pk, content_type=content_type)
 
     def get_serializer_context(self):
@@ -96,11 +101,42 @@ class PostDestroyDownvote(generics.RetrieveDestroyAPIView):
         pk = self.kwargs.get(self.lookup_url_kwargs)
         post = get_object_or_404(Post, pk=pk)
         content_type = ContentType.objects.get_for_model(model=post)
-        print(content_type)
         return Vote.objects.downvotes().filter(content_type = content_type, object_id=pk)
 
     def get_object(self):
         pk = self.kwargs.get(self.lookup_url_kwargs)
         obj = get_object_or_404(Post, pk = pk)
-        print(obj)
         return obj
+
+class PostCommentList(generics.ListCreateAPIView):
+    serializer_class = CreateCommentSerializer
+    permission_class = [isAuthorOrReadOnly, isAuthenticatedOrReadOnly]
+    lookup_url_kwargs = "pk"
+
+    def get_serializer_context(self):
+        id = self.kwargs.get(self.lookup_url_kwargs)
+        post = get_object_or_404(Post, pk=id)
+        return {'request': self.request, 'instance': post}
+
+    def get_queryset(self):
+        pk = self.kwargs.get(self.lookup_url_kwargs)
+        post = get_object_or_404(Post, pk = pk)
+        qs = Comment.objects.filter_by_instance(post)
+        return qs
+
+class PostCommentDetail(generics.RetrieveDestroyAPIView):
+    serializer_class = CommentSerializer
+    permission_classes = [isAuthenticatedOrReadOnly, isAuthorOrReadOnly]
+    lookup_field = "comment_id"
+    lookup_url_kwargs = "id"
+
+    def get_object(self):
+        id = self.kwargs.get(self.lookup_field)
+        comment = get_object_or_404(Comment, pk=id)
+        return comment
+
+    def get_queryset(self):
+        pk = self.kwargs.get(self.lookup_field)
+        post = get_object_or_404(Post, pk = pk)
+        qs = Comment.objects.filter_by_instance(post)
+        return qs

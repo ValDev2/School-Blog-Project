@@ -7,8 +7,8 @@ class isAuthenticatedOrReadOnly(BasePermission):
         return request.user.is_authenticated
 
 class isAuthorOrReadOnly(BasePermission):
-    #If GET request, let the user in
     def has_object_permission(self, request, view, obj):
+        print(obj)
         if request.method in SAFE_METHODS:
             return True
         #If the user is not the author, deny access to put / delete / post

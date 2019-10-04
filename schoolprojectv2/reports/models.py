@@ -42,8 +42,4 @@ class Report(models.Model):
         )
         if instance.exists():
             raise ValueError("This report has already been made !")
-        super(Report, self).save(*args, **kwargs)
-
-
-
-        super(Report, self).save(*args, **kwargs)
+        return super(Report, self).save(*args, **kwargs)

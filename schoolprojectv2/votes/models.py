@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from users.models import User
+from django.conf import settings
 
 
 class VoteManager(models.Manager):
@@ -24,7 +24,7 @@ class Vote(models.Model):
     ]
 
     user = models.ForeignKey(
-        User,
+            settings.AUTH_USER_MODEL,
         on_delete = models.CASCADE
     )
     activity_type = models.CharField(max_length=1, choices=ACTIVITY_TYPES)

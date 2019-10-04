@@ -13,6 +13,7 @@ class CommentManager(models.Manager):
         content_type = ContentType.objects.get_for_model(model=instance)
         object_id = instance.id
         qs = super(CommentManager, self).filter(content_type=content_type, object_id=object_id).filter(parent=None)
+        print(qs)
         return qs
 
 
@@ -35,7 +36,7 @@ class Comment(models.Model):
     objects = CommentManager()
 
     def __str__(self):
-        return f"{self.user.email} commented on {self.content_type} : '{self.content[:30]}'"
+        return f"{self.user.email} commented on {self.content_type} id = {self.object_id} : '{self.content[:30]}'"
 
     @property
     def is_parent(self):

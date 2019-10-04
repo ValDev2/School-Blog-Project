@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.google',
+
     #Keep tracking updated fields
     'field_history',
 
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
     'votes',
     'reports',
     'comments',
+    'FrontEnd',
+    'categories',
 ]
 
 SITE_ID = 2

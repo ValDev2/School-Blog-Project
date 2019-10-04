@@ -1,0 +1,55 @@
+.AppHeader{
+  position: relative;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 1032px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.UpperNavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.UpperNavBar .logo .AppHeader-logowordmark {
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: inherit;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.Appheader-metabar .Appheader-metabar-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  float: right;
+  list-style: none;
+}
+
+.Appheader-metabar .metabar-button {
+  margin-right: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.metabar-button:not(#sign-in) {
+  margin-top: 3px;
+}
+
+.searching-content {
+  display: flex;
+}
+
+/* Suggestion Styling */
