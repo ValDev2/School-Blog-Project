@@ -52,7 +52,7 @@ class AppHeader extends Component {
               <li className="metabar-button" id="metabar-search-icon">
               { this.state.isOpen === true ? (
                 <div className="searching-content">
-                <i className="fas fa-search" style={{marginRight: "15px", marginTop: "2px"}} onClick={this.toogleIsOpen}></i>
+                <i className="fas fa-search" onClick={this.toogleIsOpen}></i>
                 <AutoCompleteSearchBar />
                 </div>
               ) : (

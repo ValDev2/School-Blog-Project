@@ -1,7 +1,6 @@
 import React, { Component } form 'react';
 
 
-
 class HeaderCategories extends Component {
 
   render(){

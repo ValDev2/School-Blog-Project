@@ -5,7 +5,7 @@ from votes.models import Vote
 from comments.models import Comment
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
-from categories.models import Category
+from categories.models import CategoryField
 
 class Post(models.Model):
     user = models.ForeignKey(
@@ -16,7 +16,7 @@ class Post(models.Model):
     content = models.TextField(max_length=1000)
     datestamp = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(
-        Category,
+        CategoryField,
         on_delete = models.CASCADE,
         blank=True,
         null=True

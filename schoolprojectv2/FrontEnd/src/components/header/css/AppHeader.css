@@ -52,4 +52,10 @@
   display: flex;
 }
 
+.searching-content .fa-search {
+  margin-right: 20px;
+  margin-top: 1px;
+  font-size: 15px;
+}
+
 /* Suggestion Styling */
