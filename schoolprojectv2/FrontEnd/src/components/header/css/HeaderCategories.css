@@ -1,0 +1,42 @@
+.HeaderCategories{
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 1032px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.HeaderCategories-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.categories-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.categories-list .nav_link {
+  margin-right: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #868686;
+  font-size: 13px;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: 0.4s;
+  text-decoration: none;
+}
+
+.categories-list .nav_link:hover{
+  color: #2e2e2e;
+}
+
+.active_link {
+  color: black;
+}
