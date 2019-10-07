@@ -1,31 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCategoryFields } from '../../actions/categories';
-
+import './css/PostListStream.css';
+import LargeCard from './cards/LargeCard';
+import SmallCard from './cards/SmallCard';
 
 class PostListStream extends Component {
+  constructor(props){
+    super(props);
+    this.State = {
+      hottestPost: []
+    }
+    this.getHottestPost = this.getHottestPost.bind(this);
+  }
+
+
 
   componentDidMount(){
-    console.log("CALLING THE API TO GET THE CATFIELD");
-    console.log("PROPS ? ");
-    console.log(this.props);
+    //Getting subcategories
     this.props.getCategoryFields(this.props.field);
+    //getting the most pupular posts of each subcategories
   }
 
   render(){
     return(
       <div className="PostListStream">
-        <h1>Hello and Welcome here ! </h1>
-        <p> Page  </p>
-        { this.props.categoryFields.map( field => field.related_posts.map( post => <p>{post.title}</p>))}
+        <section className="PostList-last-stream">
+          <LargeCard />
+          <div className="small-card-wrapper">
+            <div className="small-card-content">
+              <SmallCard />
+              <SmallCard />
+            </div>
+          </div>
+        </section>
+        <div className="divider"></div>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  console.log("LES STATES  de POSTLIST! ")
-  console.log(state)
   return {
     categoryFields: state.categoryFields.category_fields
   }

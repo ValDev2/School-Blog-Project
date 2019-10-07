@@ -33,10 +33,10 @@
   text-decoration: none;
 }
 
-.categories-list .nav_link:hover{
-  color: #2e2e2e;
-}
-
 .active_link {
   color: black;
+}
+
+.categories-list .nav_link:hover{
+  color: #2e2e2e;
 }

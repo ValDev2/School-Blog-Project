@@ -18,8 +18,19 @@ class App extends Component {
           <HeaderCategories />
           <Switch>
             <Route exact
+                   key="sciences"
                    path="/sciences"
                    render={() => <PostListStream field="sciences" />}
+            />
+            <Route exact
+                   key="littérature"
+                   path="/littérature"
+                   render={() => <PostListStream field="littérature" />}
+            />
+            <Route exact
+                   key="sciences-sociales"
+                   path="/sciences-sociales"
+                   render={() => <PostListStream field="sciences-sociales" />}
             />
           </Switch>
         </div>

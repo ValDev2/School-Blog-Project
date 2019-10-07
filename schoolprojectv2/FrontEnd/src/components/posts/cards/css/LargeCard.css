@@ -1,0 +1,64 @@
+.Large-card-article {
+  flex: 2 1 auto;
+}
+
+.Large-card-article a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.article-background {
+  height: 150px;
+  display: block;
+  background-color: pink;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+
+.post-content {
+  margin-left: 105px;
+  padding-left: 10px;
+}
+
+
+.post-content-title-link, .post-extra-infos {
+  margin-top: 10px;
+}
+
+.post-title {
+  display: block;
+  margin-bottom: 15px;
+  color: black;
+  font-weight: 800;
+  font-size: 22px;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+}
+
+.post-content-link, .post-time-infos {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #4D4D4D;
+  letter-spacing: 0.8px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.user-and-category {
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 5px;
+}

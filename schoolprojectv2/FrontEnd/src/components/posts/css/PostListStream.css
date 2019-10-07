@@ -1,0 +1,21 @@
+.PostList-last-stream{
+  width: 100%;
+  max-width: 1208px;
+  margin: 15px auto 0 auto;
+  height: 350px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.small-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 2 1 auto;
+}
+
+.divider {
+  max-width: 1032px;
+  border-bottom: 1px solid #dedede;
+  margin: 35px auto;
+}

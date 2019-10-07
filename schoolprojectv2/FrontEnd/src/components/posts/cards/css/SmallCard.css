@@ -1,0 +1,78 @@
+.SmallCard {
+  margin-bottom: 15px;
+}
+
+.Small-card-article {
+  flex: 1 1 auto;
+}
+
+.Small-card-article a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.SmallCard {
+  padding: 0 15px;
+}
+
+.small-card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.small-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.article-background-small {
+  height: 150px;
+  width: 150px;
+  background-color: #FFC5B3;
+  margin-bottom: 15px;
+  margin-right: 20px;
+}
+
+.small-post-content-title-link {
+  margin-bottom: 5px;
+}
+
+.small-post-title {
+  display: block;
+  margin-bottom: 25px;
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 1.1px;
+}
+
+.small-post-content-link {
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #4D4D4D;
+  letter-spacing: 0.8px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  padding-right: 20px;
+}
+
+.small-user-and-category {
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.post-content-small{
+  width: 50%;
+  padding-right: 20px;
+}
