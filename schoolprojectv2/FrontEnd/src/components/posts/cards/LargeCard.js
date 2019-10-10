@@ -12,19 +12,19 @@ class LargeCard extends Component {
             <div className="post-content">
               <div className="post-content-title-link">
                 <a href="#" className="post-title">
-                  Voici un super Titre pour ce post !
+                  {this.props.title}
                 </a>
                 <a href="#" className="post-content-link">
-                  On a besoin de faire des tests sur les composants pour être sûr qu'ils fonctionnet à marveille !
+                  {this.props.content}
                 </a>
               </div>
               <div className="post-extra-infos">
                 <div className="user-and-category">
                   <a href="#" className="user-infos-username">
-                    Valentin Fontanger :
+                    {this.props.user_name}
                   </a>
                   <a href="#" className="post-infos-category" style={{marginLeft: "5px"}}>
-                    Test
+                    {this.props.category_subfield}
                   </a>
                 </div>
                 <div className="post-time-infos">

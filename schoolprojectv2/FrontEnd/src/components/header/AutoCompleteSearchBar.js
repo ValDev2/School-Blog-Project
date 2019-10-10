@@ -25,7 +25,6 @@ class AutoCompleteSearchBar extends Component {
     const regex = new RegExp(`${value}`, 'i');
     let postSuggestions = []
     //filtering posts and users
-    console.log(this.props)
     if( value.length > 0 ){
       postSuggestions = this.props.posts.filter( item => regex.test(item.title) );
     }
@@ -33,7 +32,6 @@ class AutoCompleteSearchBar extends Component {
       suggestions: {...this.state.suggestions, posts: postSuggestions},
       value: value
     });
-    console.log(this.state.suggestions);
   }
 
   render(){

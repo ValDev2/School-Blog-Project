@@ -10,13 +10,10 @@ var slugify = require('slugify')
 class HeaderCategories extends Component {
 
   componentDidMount(){
-    console.log("CALLING THE API !!!! ")
     this.props.getCategories();
   }
 
   render(){
-    console.log("LES PROPS : ")
-    console.log(this.props)
     return(
       <div className="HeaderCategories">
         <nav className="HeaderCategories-nav">
@@ -38,8 +35,6 @@ class HeaderCategories extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("LES STATES ! ")
-  console.log(state.categories)
   return {categories: state.categories.categories}
 }
 

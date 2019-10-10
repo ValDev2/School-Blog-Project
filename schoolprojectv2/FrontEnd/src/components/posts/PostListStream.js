@@ -11,9 +11,8 @@ class PostListStream extends Component {
     this.State = {
       hottestPost: []
     }
-    this.getHottestPost = this.getHottestPost.bind(this);
+    this.sortByLikeNumber = this.sortByLikeNumber.bind(this);
   }
-
 
 
   componentDidMount(){
@@ -22,15 +21,29 @@ class PostListStream extends Component {
     //getting the most pupular posts of each subcategories
   }
 
+  //Sort all the articles from a Category_Type by their like number
+  sortByLikeNumber(){
+    let result = [];
+    //getting all the objects from a subclass
+    this.props.categoryFields.map( field => {
+      if(field.related_posts.length != 0){
+        field.related_posts.map( post => result.push(post));
+      }
+    });
+    //sorting the objects by their like_number
+    result.sort( (a,b) => b.like_number - a.like_number);
+    return result;
+  }
+
   render(){
     return(
       <div className="PostListStream">
         <section className="PostList-last-stream">
-          <LargeCard />
+          <LargeCard {...this.sortByLikeNumber()[0]}/>
           <div className="small-card-wrapper">
             <div className="small-card-content">
-              <SmallCard />
-              <SmallCard />
+              <SmallCard {...this.sortByLikeNumber()[1]}/>
+              <SmallCard {...this.sortByLikeNumber()[2]}/>
             </div>
           </div>
         </section>
@@ -45,6 +58,5 @@ const mapStateToProps = state => {
     categoryFields: state.categoryFields.category_fields
   }
 }
-
 
 export default connect(mapStateToProps, {getCategoryFields})(PostListStream);

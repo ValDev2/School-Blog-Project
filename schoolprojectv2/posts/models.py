@@ -7,6 +7,14 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from categories.models import CategoryField
 
+#Manager
+class PostManager(models.Manager):
+    def filter_by_categoryType(self, categorytype):
+        #filtering by categoryType
+        qs = Post.objects.filter(category__category_type__category_type__exact = categorytype)
+        return qs
+
+
 class Post(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -22,6 +30,7 @@ class Post(models.Model):
         null=True
     )
     activities = GenericRelation(Vote)
+    objects = PostManager()
 
     def __str__(self):
         return f"{self.title} : {self.category.category_name}"

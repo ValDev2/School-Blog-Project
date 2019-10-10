@@ -19,8 +19,19 @@ from django.contrib.contenttypes.models import ContentType
 #Get all existing posts : Create new post / see all posts
 class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
-    queryset = Post.objects.all()
     permission_classes = [isAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        #get the queryparams
+        categoryType = self.request.query_params.get('categoryType', None)
+        print(categoryType)
+        #check if the query exists
+        if categoryType is not None:
+            queryset = Post.objects.filter_by_categoryType(categoryType)
+            print(queryset)
+        return queryset
+
 
 #Get Post Details : delete / update / get the post
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -128,7 +139,7 @@ class PostCommentDetail(generics.RetrieveDestroyAPIView):
     serializer_class = CommentSerializer
     permission_classes = [isAuthenticatedOrReadOnly, isAuthorOrReadOnly]
     lookup_field = "comment_id"
-    lookup_url_kwargs = "id"
+    lookup_url_kwargs = "pk"
 
     def get_object(self):
         id = self.kwargs.get(self.lookup_field)

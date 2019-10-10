@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POSTS } from './type';
+import { GET_POSTS, GET_POST_BY_CATEGORY_TYPE } from './type';
 
 
 
@@ -14,3 +14,16 @@ export const getPosts = () => dispatch => {
       });
     }).catch(err => console.log(err));
 };
+
+
+export const getPostByCategoryType = (categoryType) => dispatch => {
+  axios.get(`http://127.0.0.1:8000/posts/?categoryType=Sciences`)
+    .then( res => {
+      dispatch({
+        type: GET_POST_BY_CATEGORY_TYPE,
+        payload: res.data
+    });
+    console.log("API RES !!")
+    console.log(res)
+  }).catch( err => console.log(err))
+}

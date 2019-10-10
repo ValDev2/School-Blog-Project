@@ -33,11 +33,12 @@ class Vote(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     #Target's Id
     object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey()
+    #return the target
+    content_object = GenericForeignKey('content_type', 'object_id')
     objects = VoteManager()
 
     def __str__(self):
-        return f"{self.user.email} used the action {self.activity_type} on post : {self.content_object.title}"
+        return f"{self.user.email} used the action {self.activity_type} on post {self.content_object.title}"
 
     def from_user(self):
         return str(self.user.email)
