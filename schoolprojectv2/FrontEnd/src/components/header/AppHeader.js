@@ -45,7 +45,7 @@ class AppHeader extends Component {
       <div className="AppHeader">
         <nav className="UpperNavBar">
           <div className="logo">
-            <a href="#" className="AppHeader-logowordmark"><span className="logo-first-letter">G</span>arry's</a>
+            <a href="#" className="AppHeader-logowordmark">Garry's</a>
           </div>
           <div className="Appheader-metabar">
             <ul className="Appheader-metabar-buttons">

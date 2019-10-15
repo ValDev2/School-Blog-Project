@@ -21,7 +21,6 @@ class HeaderCategories extends Component {
             { this.props.categories.map( categorie => (
               <NavLink exact
                        key={slugify(categorie.category).toLowerCase()}
-                       className="nav_link"
                        activeClassName="active_link"
                        to={`/${slugify(categorie.category).toLowerCase()}`}>
                 {categorie.category}

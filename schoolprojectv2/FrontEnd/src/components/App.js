@@ -17,25 +17,27 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <AppHeader />
-          <HeaderCategories />
           <Switch>
-            <Route exact
-                   key="sciences"
-                   path="/sciences"
-                   render={() => <PostListStream field="sciences" />}
-            />
-            <Route exact
-                   key="littérature"
-                   path="/littérature"
-                   render={() => <PostListStream field="littérature" />}
-            />
-            <Route exact
-                   key="sciences-sociales"
-                   path="/sciences-sociales"
-                   render={() => <PostListStream field="sciences-sociales" />}
-            />
+            <HeaderCategories />
+            <Switch>
+              <Route exact
+                     key="sciences"
+                     path="/sciences"
+                     render={() => <PostListStream field="sciences" />}
+              />
+              <Route exact
+                     key="littérature"
+                     path="/littérature"
+                     render={() => <PostListStream field="littérature" />}
+              />
+              <Route exact
+                     key="sciences-sociales"
+                     path="/sciences-sociales"
+                     render={() => <PostListStream field="sciences-sociales" />}
+              />
+            </Switch>
+            <PostList />    
           </Switch>
-          <PostList />
         </div>
       </Provider>
     )

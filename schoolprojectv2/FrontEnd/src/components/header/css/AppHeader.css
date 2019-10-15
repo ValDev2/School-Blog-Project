@@ -1,5 +1,4 @@
 .AppHeader{
-  position: relative;
   font-family: 'Ubuntu', sans-serif;
   padding: 0 20px;
   margin: 0 auto;
@@ -17,11 +16,6 @@
 
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-}
-
 .UpperNavBar .logo .AppHeader-logowordmark {
   font-weight: 600;
   font-size: 20px;
@@ -32,10 +26,7 @@
 }
 .Appheader-metabar .Appheader-metabar-buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  float: right;
-  list-style: none;
+
 }
 
 .Appheader-metabar .metabar-button {

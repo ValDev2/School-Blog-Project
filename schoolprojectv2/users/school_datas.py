@@ -7,8 +7,11 @@ url = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?da
 #Calling the API to get 1 : all colleges from France, 2 : all internal_code from them
 response = requests.get(url).json()
 schools = [univ['fields']['uo_lib'] for univ in response['records']]
+print()
+print(schools)
+print()
 #Improtant ! Here a the codes for each schools !
-schools_code = [univ['fields']['identifiant_interne'] for univ in response['records']]
+schools_code = [univ['fields']['com_nom'] for univ in response['records']]
 
 #Checking if there are enough codes (no duplicates) for each college
 print(len(schools) == len(set(schools_code)))

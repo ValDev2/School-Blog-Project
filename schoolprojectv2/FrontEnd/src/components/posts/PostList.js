@@ -1,6 +1,6 @@
 import debounce from "lodash.debounce";
 import React, { Component } from 'react';
-import SmallCard from './cards/SmallCard';
+import StreamCardItem from './cards/StreamCardItem';
 import { connect } from 'react-redux';
 import { getPostByCategoryType } from '../../actions/posts';
 import './css/PostList.css';
@@ -45,15 +45,15 @@ class PostList extends Component {
       <div className="PostList">
         <div className="PostListContent">
         {this.props.posts.map( post => (
-          <SmallCard />
+          <StreamCardItem {...post}/>
         ))}
         </div>
         <div className="PostListSideBar">
-          <aside className="PostListSideBar">
+          <aside className="PostListSideBarAside">
             <div className="PostListSideBarTittle">
-              <h2>Best Users</h2>
+              <h2>Nos Top Utilisateurs </h2>
               <ul className="SideBarBestUser">
-                <li>Jean</li>
+                <li></li>
               </ul>
             </div>
           </aside>

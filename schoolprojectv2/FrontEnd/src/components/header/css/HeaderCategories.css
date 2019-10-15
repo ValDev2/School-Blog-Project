@@ -12,8 +12,6 @@
 
 .HeaderCategories-nav {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 
 .categories-list {
@@ -22,7 +20,7 @@
   list-style: none;
 }
 
-.categories-list .nav_link {
+.categories-list * {
   margin-right: 20px;
   text-transform: uppercase;
   font-weight: 400;
@@ -35,8 +33,4 @@
 
 .active_link {
   color: black;
-}
-
-.categories-list .nav_link:hover{
-  color: #2e2e2e;
 }

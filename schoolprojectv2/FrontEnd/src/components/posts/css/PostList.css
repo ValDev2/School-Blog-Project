@@ -7,6 +7,7 @@
   width: 100%;
   margin: 0 auto;
   margin-top: 30px;
+  padding: 0 20px;
 }
 
 .PostListContent {
@@ -14,10 +15,25 @@
   flex-direction: column;
   flex-basis: 0;
   flex: 1 1 auto;
-  padding-right: 30px;
+  padding-right: 50px;
 }
 
 .PostListSideBar {
   flex-basis: 0;
-  flex: 1 1 auto;
+  flex: 2 1 auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.PostListSideBarAside {
+  display: flex;
+  text-align: center;
+}
+
+.PostListSideBarTittle {
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  text-transform: uppercase;
 }

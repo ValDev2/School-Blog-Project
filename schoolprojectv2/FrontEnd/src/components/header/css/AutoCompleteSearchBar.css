@@ -8,15 +8,19 @@ ul {
 
 .AutocompleteResults {
   position: absolute;
+  background-color: #fff;
+  border-radius: 0.4em;
+  width: 168px;
+  transition: all 0.2s ease;
 }
 
 .PostResults {
-  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .AutoCompleteSearchBar input {
   padding: 0;
-  
 }
 
 hr {
@@ -33,10 +37,11 @@ hr {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-size: 15px;
+  margin: 0 auto;
 }
 
 .single-post-result {
-  margin: 15px 0;
+  margin: 15px 0 15px 10px;
   font-size: 15px;
   padding-bottom: 20px;
   border-bottom: 0.3px solid #D3D3D3;

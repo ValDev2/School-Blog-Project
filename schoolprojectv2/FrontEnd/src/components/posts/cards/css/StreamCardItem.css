@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+}
+
+.StreamCardItem a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.StreamCardItem ul {
+  list-style: none;
+  margin: 0;
+}
+
+.StreamCardItem {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.StreamPostPreview {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+  width: 100%;
+  border: 1 px solid black;
+}
+
+.StreamCardItemContent {
+  text-align: left;
+}
+
+.StreamCardItemContent {
+  flex: 1 1 auto;
+}
+
+.StreamCardUpperContent .StreamLink .StreamCardItemTitle {
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.StreamCardItemSubTitle {
+  color: #7d7c7c;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.StreamCardLowerContent {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.StreamCardInfo {
+  font-weight: 400;
+  color: black;
+  margin-bottom: 5px;
+  font-size: 14px;
+
+}
+
+.StreamCardItemBackground {
+  height: 100px;
+  width: 150px;
+  background-color: #FFC5B3;
+
+}
