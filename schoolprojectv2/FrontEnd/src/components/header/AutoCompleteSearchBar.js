@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPosts } from '../../actions/posts.js';
 import './css/AutoCompleteSearchBar.css';
 
 class AutoCompleteSearchBar extends Component {
@@ -17,7 +16,6 @@ class AutoCompleteSearchBar extends Component {
   }
 
   componentDidMount(){
-    this.props.getPosts();
   }
 
   handleChange(e){
@@ -58,6 +56,5 @@ class AutoCompleteSearchBar extends Component {
   }
 }
 
-const mapStateToProps = state => ({posts: state.posts})
 
-export default connect(mapStateToProps, {getPosts})(AutoCompleteSearchBar);
+export default AutoCompleteSearchBar;

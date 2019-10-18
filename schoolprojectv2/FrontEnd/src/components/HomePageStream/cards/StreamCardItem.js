@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './css/StreamCardItem.css';
+import { Link } from 'react-router-dom';
+
 
 export default class StreamCardItem extends Component {
 
@@ -10,24 +12,24 @@ export default class StreamCardItem extends Component {
         <article className="StreamPostPreview">
           <div className="StreamCardItemContent">
             <div className="StreamCardUpperContent">
-              <a href="#" className="StreamLink">
+              <Link to={`/article/${this.props.id}`} className="StreamLink">
                 <h2 className="StreamCardItemTitle">
                   {this.props.title}
                 </h2>
                 <p className="StreamCardItemSubTitle">
                   {this.props.content}
                 </p>
-              </a>
+              </Link>
             </div>
             <div className="StreamCardLowerContent">
-            <a href="#" className="StreamLink">
+            <Link to={`/article/${this.props.id}`} className="StreamLink">
               <div className="StreamCardInfo">
                 <span className="StreamCardUser">ValentinF</span> dans <span className="StreamCardCategory">Mathématiques</span>
               </div>
-            </a>
+            </Link>
             </div>
           </div>
-          <a className="StreamCardItemBackground" href="#"></a>
+          <Link to={`/article/${this.props.id}`} className="StreamCardItemBackground"></Link>
         </article>
       </div>
     )

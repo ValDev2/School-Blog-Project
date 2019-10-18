@@ -1,10 +1,8 @@
-import posts from './posts';
-import categories from './categories';
-import categoryFields from './categoryFields';
-import { combineReducers } from 'redux'
+import categoryReducer from './categories/categories.js';
+import {combineReducers} from 'redux';
+import {homePageReducer} from './HomePageStream/homePageStreamReducer.js';
 
-export default combineReducers({
-  posts,
-  categories,
-  categoryFields,
+export const rootReducer = combineReducers({
+  categories: categoryReducer,
+  homePage: homePageReducer
 });

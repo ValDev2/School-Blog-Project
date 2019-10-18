@@ -12,19 +12,19 @@ export default class SmallCard extends Component {
             <div className="post-content-small">
               <div className="small-post-content-title-link">
                 <a href="#" className="small-post-title">
-                  {this.props.title}
+                  Title !
                 </a>
                 <a href="#" className="small-post-content-link">
-                  {this.props.content}
+                  Content !
                 </a>
               </div>
               <div className="small-post-extra-infos">
                 <div className="small-user-and-category">
                   <a href="#" className="small-user-infos-username">
-                    {this.props.user_name} in 
+                    Valentin
                   </a>
                   <a href="#" className="small-post-infos-category" style={{marginLeft: "5px"}}>
-                    {this.props.category_subfield}
+                    Mathématiques ! 
                   </a>
                 </div>
               </div>

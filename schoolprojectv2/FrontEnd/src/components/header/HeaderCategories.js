@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCategories } from '../../actions/categories';
 import './css/HeaderCategories.css';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { NavLink, Link, Switch } from 'react-router-dom';
 import AutoCompleteSearchBar from './AutoCompleteSearchBar';
 var slugify = require('slugify')
 
@@ -18,12 +18,12 @@ class HeaderCategories extends Component {
       <div className="HeaderCategories">
         <nav className="HeaderCategories-nav">
           <ul className="categories-list">
-            { this.props.categories.map( categorie => (
+            { this.props.categories.map( category => (
               <NavLink exact
-                       key={slugify(categorie.category).toLowerCase()}
+                       key={slugify(category.category).toLowerCase()}
                        activeClassName="active_link"
-                       to={`/${slugify(categorie.category).toLowerCase()}`}>
-                {categorie.category}
+                       to={`/${slugify(category.category).toLowerCase()}`}>
+                {category.category}
               </NavLink>
             ))}
           </ul>
@@ -34,6 +34,7 @@ class HeaderCategories extends Component {
 }
 
 const mapStateToProps = state => {
+  
   return {categories: state.categories.categories}
 }
 

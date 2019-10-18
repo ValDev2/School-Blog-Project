@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './css/App.css';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import { store } from '../store.js';
 import AppHeader from './header/AppHeader';
-import HeaderCategories from './header/HeaderCategories'
-import PostListStream from './posts/PostListStream';
-import PostList from './posts/PostList';
+import HomePageStream from './HomePageStream/HomePageStream.js';
+import HeaderCategories from './header/HeaderCategories';
 import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from 'react-router-dom';
 
@@ -17,26 +15,12 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <AppHeader />
+          <HeaderCategories />
           <Switch>
-            <HeaderCategories />
-            <Switch>
-              <Route exact
-                     key="sciences"
-                     path="/sciences"
-                     render={() => <PostListStream field="sciences" />}
-              />
-              <Route exact
-                     key="littérature"
-                     path="/littérature"
-                     render={() => <PostListStream field="littérature" />}
-              />
-              <Route exact
-                     key="sciences-sociales"
-                     path="/sciences-sociales"
-                     render={() => <PostListStream field="sciences-sociales" />}
-              />
-            </Switch>
-            <PostList />    
+            <Route exact
+                   path="/:category"
+                   render={routerProps => <HomePageStream {...routerProps}/>}
+            />
           </Switch>
         </div>
       </Provider>
