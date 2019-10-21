@@ -6,12 +6,17 @@ from comments.models import Comment
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from categories.models import CategoryField
+from django.core.exceptions import ValidationError
+from django.template.defaultfilters import slugify
+import random
+import string
+
 
 #Manager
 class PostManager(models.Manager):
     def filter_by_categoryType(self, categorytype):
         #filtering by categoryType
-        qs = Post.objects.filter(category__category_type__category_type__exact = categorytype)
+        qs = Post.objects.filter(category__category_type__slug__exact = categorytype)
         return qs
 
 
@@ -31,9 +36,24 @@ class Post(models.Model):
     )
     activities = GenericRelation(Vote)
     objects = PostManager()
+    slug = models.SlugField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return f"{self.title} : {self.category.category_name}"
+
+    def save(self,*args, **kwargs):
+        if self.title:
+            self.create_slug()
+            super(Post, self).save(*args, **kwargs)
+        else:
+            return ValidationError("Invalid Title ! ")
+
+
+    def create_slug(self):
+        l = string.ascii_letters+string.digits
+        rdm = "-"+"".join([l[random.randint(0,len(l)-1)] for i in range(10)])
+        self.slug = slugify(self.title + rdm)
+        return self.slug
 
     def get_username(self):
         return self.user.email

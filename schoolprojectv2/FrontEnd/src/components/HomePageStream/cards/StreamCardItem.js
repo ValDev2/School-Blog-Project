@@ -12,24 +12,24 @@ export default class StreamCardItem extends Component {
         <article className="StreamPostPreview">
           <div className="StreamCardItemContent">
             <div className="StreamCardUpperContent">
-              <Link to={`/article/${this.props.id}`} className="StreamLink">
+              <Link to={`/article/${this.props.post.slug}`} className="StreamLink">
                 <h2 className="StreamCardItemTitle">
-                  {this.props.title}
+                  {this.props.post.title}
                 </h2>
                 <p className="StreamCardItemSubTitle">
-                  {this.props.content}
+                  {this.props.post.content}
                 </p>
               </Link>
             </div>
             <div className="StreamCardLowerContent">
-            <Link to={`/article/${this.props.id}`} className="StreamLink">
+            <Link to={`/article/${this.props.post.slug}`} className="StreamLink">
               <div className="StreamCardInfo">
-                <span className="StreamCardUser">ValentinF</span> dans <span className="StreamCardCategory">Mathématiques</span>
+                <span className="StreamCardUser">{this.props.post.user_name}</span> dans <span className="StreamCardCategory">{this.props.post.category_subfield}</span>
               </div>
             </Link>
             </div>
           </div>
-          <Link to={`/article/${this.props.id}`} className="StreamCardItemBackground"></Link>
+          <Link to={`/article/${this.props.post.slug}`} className="StreamCardItemBackground"></Link>
         </article>
       </div>
     )

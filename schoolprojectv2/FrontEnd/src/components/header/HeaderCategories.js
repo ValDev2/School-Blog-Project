@@ -13,6 +13,7 @@ class HeaderCategories extends Component {
     this.props.getCategories();
   }
 
+
   render(){
     return(
       <div className="HeaderCategories">
@@ -34,7 +35,7 @@ class HeaderCategories extends Component {
 }
 
 const mapStateToProps = state => {
-  
+
   return {categories: state.categories.categories}
 }
 

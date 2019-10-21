@@ -5,23 +5,13 @@ import { connect } from 'react-redux';
 import './css/PostList.css';
 
 class PostList extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      posts: []
-    }
-  }
-  componentDidMount(){
-  }
-
   render(){
     return(
       <div className="PostList">
         <div className="PostListContent">
-          <StreamCardItem />
-          <StreamCardItem />
-          <StreamCardItem />
-
+          {this.props.posts.map( post => (
+            <StreamCardItem post={post}/>
+          ))}
         </div>
         <div className="PostListSideBar">
           <aside className="PostListSideBarAside">

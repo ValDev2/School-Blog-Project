@@ -1,0 +1,23 @@
+.CommentBox {
+  margin-top: 2em;
+  width: 100%;
+  border-radius: 0.3em;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.CommentBoxHeaderTitle {
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.CommentBoxContainer {
+  max-width: 680px;
+  width: 100%;
+  margin: 1.5em 0;
+}

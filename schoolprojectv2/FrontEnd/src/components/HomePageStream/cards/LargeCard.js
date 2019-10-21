@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/LargeCard.css';
+import {Link} from 'react-router-dom';
 
 class LargeCard extends Component {
 
@@ -8,24 +9,24 @@ class LargeCard extends Component {
       <div className="LargeCard">
         <article className="Large-card-article">
           <div className="container">
-            <a href="#" alt="article-background" className="article-background"></a>
+            <Link to={`/article/${this.props.post.slug}`} alt="article-background" className="article-background"></Link>
             <div className="post-content">
               <div className="post-content-title-link">
-                <a href="#" className="post-title">
-                  Titre
-                </a>
-                <a href="#" className="post-content-link">
-                  Contenu ! Contenu !
-                </a>
+                <Link to={`/article/${this.props.post.slug}`} className="post-title">
+                  {this.props.post.title}
+                </Link>
+                <Link to={`/article/${this.props.post.slug}`} className="post-content-link">
+                  {this.props.post.content.slice(0,20) + " ..."}
+                </Link>
               </div>
               <div className="post-extra-infos">
                 <div className="user-and-category">
-                  <a href="#" className="user-infos-username">
-                    Valentin
-                  </a>
-                  <a href="#" className="post-infos-category" style={{marginLeft: "5px"}}>
-                    Mathématiques ! 
-                  </a>
+                  <Link to={`/article/${this.props.post.slug}`} className="user-infos-username">
+                    {this.props.post.user_name}
+                  </Link>
+                  <Link to={`/article/${this.props.post.slug}`} className="post-infos-category" style={{marginLeft: "5px"}}>
+                    {this.props.post.category_subfield}
+                  </Link>
                 </div>
                 <div className="post-time-infos">
                   <p className="time-infos">24 septembre</p>
@@ -39,4 +40,4 @@ class LargeCard extends Component {
   }
 }
 
-export default LargeCard
+export default LargeCard;

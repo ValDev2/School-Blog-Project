@@ -25,11 +25,9 @@ class PostList(generics.ListCreateAPIView):
         queryset = Post.objects.all()
         #get the queryparams
         categoryType = self.request.query_params.get('categoryType', None)
-        print(categoryType)
         #check if the query exists
         if categoryType is not None:
-            queryset = Post.objects.filter_by_categoryType(categoryType)
-            print(queryset)
+            queryset = Post.objects.filter_by_categoryType(categorytype=categoryType)
         return queryset
 
 

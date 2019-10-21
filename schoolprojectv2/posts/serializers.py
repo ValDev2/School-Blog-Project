@@ -44,7 +44,6 @@ class PostSerializer(serializers.ModelSerializer):
         return CommentParentSerializer(qs, many=True).data
 
 
-
     class Meta:
         model = Post
-        fields = ('id','user', 'user_name','title', 'content', 'like_number', 'likes', 'downvotes', 'downvotes_number', 'comments', 'category_field', 'category_subfield', 'category' )
+        fields = ('id','user', 'user_name','title','slug', 'content', 'like_number', 'likes', 'downvotes', 'downvotes_number', 'comments', 'category_field', 'category_subfield', 'category' )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/SmallCard.css';
+import {Link} from 'react-router-dom';
 
 export default class SmallCard extends Component {
 
@@ -8,24 +9,24 @@ export default class SmallCard extends Component {
       <div className="SmallCard">
         <article className="Small-card-article">
           <div className="small-container">
-            <a href="#" alt="article-background" className="article-background-small"></a>
+            <Link to={`/article/${this.props.post.slug}`} alt="article-background" className="article-background-small"></Link>
             <div className="post-content-small">
               <div className="small-post-content-title-link">
-                <a href="#" className="small-post-title">
-                  Title !
-                </a>
-                <a href="#" className="small-post-content-link">
-                  Content !
-                </a>
+                <Link to={`/article/${this.props.post.slug}`} className="small-post-title">
+                  {this.props.post.title}
+                </Link>
+                <Link to={`/article/${this.props.post.slug}`} className="small-post-content-link">
+                  {this.props.post.content.slice(0,20) + " ..."}
+                </Link>
               </div>
               <div className="small-post-extra-infos">
                 <div className="small-user-and-category">
-                  <a href="#" className="small-user-infos-username">
-                    Valentin
-                  </a>
-                  <a href="#" className="small-post-infos-category" style={{marginLeft: "5px"}}>
-                    Mathématiques ! 
-                  </a>
+                  <Link to={`/article/${this.props.post.slug}`} className="small-user-infos-username">
+                    {this.props.post.user_name}
+                  </Link>
+                  <Link to={`/article/${this.props.post.slug}`} className="small-post-infos-category" style={{marginLeft: "5px"}}>
+                    {this.props.post.category_subfield}
+                  </Link>
                 </div>
               </div>
             </div>

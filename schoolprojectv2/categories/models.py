@@ -21,7 +21,6 @@ class CategoryType(models.Model):
     )
     category_type = models.CharField(max_length = 100, unique = True)
     objects = CategoryTypeManager()
-
     slug = models.SlugField(max_length=40, default="", blank=True, null=True)
 
     def __str__(self):
@@ -32,7 +31,8 @@ class CategoryType(models.Model):
         if user.is_admin:
             self.create_slug()
             super(CategoryType, self).save(*args, **kwargs)
-        return ValidationError('You must be an Admin User !')
+        else: 
+            return ValidationError('You must be an Admin User !')
 
     def create_slug(self):
         self.slug = slugify(self.category_type)
@@ -41,7 +41,6 @@ class CategoryType(models.Model):
     #Retourne les sous-cat d'un Type de catégorie
     def get_subcategories(self):
         qs = CategoryField.objects.filter(category_type=self)
-        print(qs)
         return qs
 
 

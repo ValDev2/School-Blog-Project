@@ -1,0 +1,47 @@
+.CommentCardItem {
+  margin: 1.2em 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: white;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  border-radius: 0.4em;
+}
+
+.CommentCardItem:hover{
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1), 0 4px 4px rgba(0,0,0,0.1);
+}
+
+.CommentCardItemContainer {
+  padding: 20px;
+}
+
+.CommentCardItemUser{
+  text-decoration: none;
+  color: inherit;
+  letter-spacing: 1px;
+  font-size: 22px;
+  font-weight: 600
+}
+
+.CommentCardItemTime {
+  font-size: 15px;
+  color: #868686;
+}
+
+.CommentCardItemResponse {
+  margin-top: 0.8em;
+  line-height: 1.2em;
+  font-size: 18px;
+  color: black;
+  letter-spacing: 0.04em;
+}
+
+.CommentCardItemSocialInfos {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.CommentCardItemLikesNumber {
+  margin-left: 10px;
+}

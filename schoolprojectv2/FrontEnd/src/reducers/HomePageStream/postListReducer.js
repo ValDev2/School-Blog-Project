@@ -2,7 +2,7 @@ import {GET_POSTS_BY_CATEGORY} from "../../actions/type.js";
 
 const initialState = {
   posts: [],
-  isLoading: false
+  isLoading: false,
 }
 
 //getting posts by category
@@ -12,7 +12,7 @@ function postListReducer(state = initialState, action){
       return {
         ...state,
         posts: action.payload,
-        isLoading: true
+        isLoading: true,
       };
     default:
       return state;
