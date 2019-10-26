@@ -1,6 +1,9 @@
 from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 
 class isAuthenticatedOrReadOnly(BasePermission):
+
+    message = "You must be Log In ! "
+
     def has_permission(self, request, view):
         if request.method in SAFE_METHODS:
             return True

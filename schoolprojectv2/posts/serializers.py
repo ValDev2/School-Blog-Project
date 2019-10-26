@@ -13,6 +13,7 @@ class PostSerializer(serializers.ModelSerializer):
     downvotes = serializers.SerializerMethodField()
     downvotes_number = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
+    comments_number = serializers.SerializerMethodField()
     category_field = serializers.CharField(source="category_type", read_only=True)
     category_subfield = serializers.CharField(source="category_name", read_only=True)
 
@@ -43,7 +44,10 @@ class PostSerializer(serializers.ModelSerializer):
         qs = Comment.objects.filter_by_instance(instance=obj)
         return CommentParentSerializer(qs, many=True).data
 
+    def get_comments_number(self, obj):
+        return obj.comments.filter_by_instance(instance=obj).count()
+
 
     class Meta:
         model = Post
-        fields = ('id','user', 'user_name','title','slug', 'content', 'like_number', 'likes', 'downvotes', 'downvotes_number', 'comments', 'category_field', 'category_subfield', 'category' )
+        fields = ('id','user', 'user_name','title','slug', 'content', 'like_number', 'likes', 'downvotes', 'downvotes_number', 'comments', 'comments_number', 'category_field', 'category_subfield', 'category' )

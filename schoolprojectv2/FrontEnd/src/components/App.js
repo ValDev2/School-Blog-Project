@@ -8,26 +8,40 @@ import HeaderCategories from './header/HeaderCategories.js';
 import ArticleDetails from './ArticleDetails/ArticleDetails.js';
 import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from 'react-router-dom';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
+import Alerts from './Alerts/Alerts.js';
+
+
+const options = {
+  timeout: 2000,
+  position: "top center"
+}
 
 
 class App extends Component {
   render(){
     return(
       <Provider store={store}>
-        <div className="App">
-          <AppHeader />
-          <HeaderCategories />
-          <Switch>
-            <Route exact
-                   path="/:category"
-                   render={routerProps => <HomePageStream {...routerProps}/>}
-            />
-            <Route exact
-                   path="/article/:slug"
-                   render={routerProps => <ArticleDetails {...routerProps}/>}
-            />
-          </Switch>
-        </div>
+        <AlertProvider template={AlertTemplate}
+                       {...options}
+        >
+          <div className="App">
+            <AppHeader />
+            <Alerts />
+            <HeaderCategories />
+            <Switch>
+              <Route exact
+                     path="/:category"
+                     render={routerProps => <HomePageStream {...routerProps}/>}
+              />
+              <Route exact
+                     path="/article/:slug"
+                     render={routerProps => <ArticleDetails {...routerProps}/>}
+              />
+            </Switch>
+          </div>
+        </AlertProvider>
       </Provider>
     )
   }

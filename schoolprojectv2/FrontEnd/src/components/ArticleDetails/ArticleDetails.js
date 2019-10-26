@@ -5,7 +5,8 @@ import './css/ArticleDetails.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import CommentsBox from './Comments/CommentsBox.js';
-
+import {connect} from 'react-redux';
+import {getPost} from '../../actions/posts.js';
 
 const styles = {
   button: {
@@ -20,32 +21,65 @@ const styles = {
   }
 }
 
-
 class ArticleDetails extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isCommentOpen: false
+      isCommentOpen: false,
+      post: []
     };
     this.toogleCommentsBox = this.toogleCommentsBox.bind(this);
+    this.handleDisplayComments = this.handleDisplayComments.bind(this);
   }
 
   componentDidMount(){
     console.log("Welome to the Article Details");
+    this.props.getPost(this.props.match.params.slug);
+    //this.props.getPost();
   }
 
   toogleCommentsBox(e){
     this.setState({isCommentOpen: !this.state.isCommentOpen})
   }
 
+  handleDisplayComments(e){
+    if(this.props.post.comments_number !== 0){
+      if(this.state.isCommentOpen){
+        return (
+          <Button variant="outlined"
+                  size="large"
+                  color="primary"
+                  className={classes.button}
+                  onClick={() => this.toogleCommentsBox()}
+                  style={{
+                    width: "70%",
+                    fontSize: "14px",
+                    padding: "20px"
+                  }}>
+            Commentaires ( {this.props.post.comments_number} )
+          </Button>
+          )
+        } else {
+          console.log("I M INSIDE THE FUNCTION !!!!")
+          console.log(this.props.post);
+          console.log(this.props.post.comments_number);
+          return(
+            <CommentsBox comments={this.props.post.comments} comments_number={this.props.post.comments_number}/>
+          )
+        }
+    }
+  }
+
+
   render(){
+    console.log(this.props.post);
     const { classes } = this.props;
     return(
       <div className="ArticleDetails">
         <article className="Article">
           <div className="ArticleDetailsContent">
             <h1 className="ArticleDetailsTitle">
-              Hey, Here is the Title !
+              {this.props.post.title}
             </h1>
             <h3 className="ArticleDetailsSubTitle">
               Here goes the subtitle !
@@ -53,7 +87,7 @@ class ArticleDetails extends Component {
             <div className="ArticleDetailsUserInfos">
               <div className="ArticleDetailsUser">
                 <p className="ArticleDetailsUserName">
-                  Valentin
+                  {this.props.post.user_name}
                   <span style={{marginLeft: "10px"}}>
                     Follow
                   </span>
@@ -81,7 +115,7 @@ class ArticleDetails extends Component {
             <div className="ArticleDetailsBottom">
               <div className="ArticleDetailsTags">
                 <div className="ArticleDetailsSimpleTag">
-                  Mathématiques
+                  {this.props.post.category_field}
                 </div>
               </div>
               <div className="ArtileDetailsSocialInfos">
@@ -89,7 +123,7 @@ class ArticleDetails extends Component {
                   <div className="ArticleDetailsLikes">
                     <i className="fab fa-gratipay"></i>
                     <span className="ArticleDetailsLikeNumber">
-                      300 likes
+                      {this.props.post.like_number}
                     </span>
                   </div>
                   <div className="ArticleDetailsSocialMedia">
@@ -106,7 +140,7 @@ class ArticleDetails extends Component {
                       <div className="ArticleDetailsWrittenByContent">
                         <p className="ArticleDetailsInfosHead">L'auteur</p>
                         <div className="ArticleDetailsInfosTitle">
-                          <h2>UserName </h2>
+                          <h2>{this.props.post.user_name} </h2>
                         </div>
                         <p className="description">J'aime faire des choses ...</p>
                       </div>
@@ -119,7 +153,7 @@ class ArticleDetails extends Component {
                     <div className="ArticleDetailsCategory">
                       <div className="ArticleDetailsCategoryContent">
                         <div className="ArticleDetailsInfosTitle">
-                          <h2>Mathématiques</h2>
+                          <h2>{this.props.post.category_subfield}</h2>
                         </div>
                         <p className="description">Equation, Functions & more ... </p>
                       </div>
@@ -131,23 +165,7 @@ class ArticleDetails extends Component {
                     </div>
                     <div className="separator"></div>
                     <div className="ArticleDetailsComments">
-                    { this.state.isCommentOpen === false ? (
-                      <Button variant="outlined"
-                              size="large"
-                              color="primary"
-                              className={classes.button}
-                              onClick={() => this.toogleCommentsBox()}
-                              style={{
-                                width: "70%",
-                                fontSize: "14px",
-                                padding: "20px"
-                              }}>
-                        Commentaires ( 3 )
-                      </Button>
-                    ) : (
-                      <CommentsBox />
-                    )
-                    }
+                      { this.props.post.like_number !== undefined && this.handleDisplayComments()}
                     </div>
                   </div>
               </div>
@@ -159,4 +177,11 @@ class ArticleDetails extends Component {
   }
 }
 
-export default withStyles(styles)(ArticleDetails);
+const mapStateToProps = state => {
+    console.log(state.post.post)
+    return {
+      post: state.post.post
+    }
+}
+
+export default connect(mapStateToProps, {getPost})(withStyles(styles)(ArticleDetails));

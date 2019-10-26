@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .permissions import isAuthenticatedOrReadOnly, isAuthorOrReadOnly
 from .serializers import PostSerializer
 from .models import Post
-from rest_framework import generics
+from rest_framework import generics, permissions
 from votes.serializers import ActivitySerializer, LikeSerializer, DownvoteSerializer
 from comments.serializers import (
                                     CommentChildSerializer,
@@ -36,6 +36,8 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     permission_classes = [isAuthenticatedOrReadOnly, isAuthorOrReadOnly]
+    #permission_classes = [permissions.IsAuthenticated]
+    lookup_field = "slug"
 
 #Get my posts : List
 class MyPostList(generics.ListCreateAPIView):

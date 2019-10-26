@@ -35,6 +35,7 @@ class Post(models.Model):
         null=True
     )
     activities = GenericRelation(Vote)
+    comments = GenericRelation(Comment)
     objects = PostManager()
     slug = models.SlugField(max_length=50, blank=True, null=True)
 

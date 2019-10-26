@@ -12,9 +12,9 @@ class CommentsBox extends Component {
               Commentaires
             </span>
             <div className="CommentBoxResponsesList">
-              <CommentCardItem />
-              <CommentCardItem />
-
+              {this.props.comments.map( cmt => (
+                <CommentCardItem comment={cmt} />
+              ))}
             </div>
           </div>
         </div>
