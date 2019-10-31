@@ -52,7 +52,18 @@ INSTALLED_APPS = [
     'categories',
 ]
 
-SITE_ID = 2
+SITE_ID = 1
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'users.authSerializers.TokenSerializer',
+}
 
 
 MIDDLEWARE = [
@@ -150,7 +161,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
-
 #Redirection
 LOGIN_REDIRECT_URL = '/users/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/users/'

@@ -28,10 +28,6 @@ export const getPost = slug => dispatch => {
         msg: err.response.data,
         status: err.response.status
       };
-      dispatch({
-        type: GET_ERRORS,
-        payload: errors
-      })
     })
     ;
 }

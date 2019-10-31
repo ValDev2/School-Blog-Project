@@ -35,7 +35,6 @@ class ArticleDetails extends Component {
   componentDidMount(){
     console.log("Welome to the Article Details");
     this.props.getPost(this.props.match.params.slug);
-    //this.props.getPost();
   }
 
   toogleCommentsBox(e){

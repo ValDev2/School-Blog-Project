@@ -6,7 +6,6 @@ from .views import ( UserList,
                         GetSentFriendRequest,
                         DeleteSentFriendRequest,
                         ExperienceList,
-
                     )
 from django.urls import path, include
 

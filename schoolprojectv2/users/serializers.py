@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import FriendRequest, Experience
 from profiles.serializers import StudentSerializer, TeacherSerializer
 from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate
 User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):

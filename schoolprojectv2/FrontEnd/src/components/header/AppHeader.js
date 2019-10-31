@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import AutoCompleteSearchBar from './AutoCompleteSearchBar.js';
+import { Link } from 'react-router-dom';
 
 
 //Material Ui Styling
@@ -31,7 +32,6 @@ class AppHeader extends Component {
     }
     this.toogleIsOpen = this.toogleIsOpen.bind(this);
   }
-
 
   toogleIsOpen(){
     this.setState( st => ({
@@ -69,11 +69,13 @@ class AppHeader extends Component {
                   </li>
                 </div>
               ) : (
-                <li className="metabar-button user-profile-icon" id="sign-in">
-                  <Button variant="outlined" color="primary" className={classes.button}>
-                    Sign In
-                  </Button>
-                </li>
+                <Link to="/authentication/login">
+                  <li className="metabar-button user-profile-icon" id="sign-in">
+                    <Button variant="outlined" color="primary" className={classes.button}>
+                      Sign In
+                    </Button>
+                  </li>
+                </Link>
               )
               }
             </ul>
