@@ -61,13 +61,15 @@ class Login extends Component {
                           </Grid>
                       </Grid>
                       <div className="submit-button">
-                          <Button variant="outlined" size="large" color="primary" onClick={this.handleSubmit} className="submit-button">
-                            submit
-                          </Button>
+                          { this.props.loading === true ? (
+                              <CircularProgress disableShrink />
+                          ) : (
+                              <Button variant="outlined" size="large" color="primary" onClick={this.handleSubmit} className="submit-button">
+                                submit
+                              </Button>
+                          )}
+
                       </div>
-                      { this.props.loading === true &&
-                          <CircularProgress disableShrink />
-                      }
                   </div>
               </div>
           </div>

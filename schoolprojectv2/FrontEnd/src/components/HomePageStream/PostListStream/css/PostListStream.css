@@ -6,6 +6,9 @@
   box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
+  animation: fade;
+  animation-duration: 400ms;
+  animation-fill-mode: forwards;
 }
 
 .small-card-wrapper {
@@ -17,4 +20,14 @@
   max-width: 1032px;
   border-bottom: 1px solid #dedede;
   margin: 35px auto;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
