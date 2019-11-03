@@ -1,6 +1,18 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {authLogin} from '../../actions/authentication.js';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Button from '@material-ui/core/Button';
+import './css/Login.css';
+
+
 
 class Login extends Component {
 
@@ -16,6 +28,7 @@ class Login extends Component {
 
   handleChange(e){
     this.setState({[e.target.name]: e.target.value});
+    console.log(this.state)
   }
 
   handleSubmit(e){
@@ -25,17 +38,40 @@ class Login extends Component {
 
   render(){
     return(
-      <div className="Login">
-        <h1> This is a form </h1>
-        <form>
-          <input type="text" onChange={this.handleChange} name="email"/>
-          <input type="password" onChange={this.handleChange} name="password"/>
-          <input type="submit" onClick={this.handleSubmit}/>
-          { this.props.isAuthenticated &&
-            <p>Hello </p>
-          }
-        </form>
-      </div>
+      <section className="Login">
+          <div className="Login-content">
+              <div className="Login-text">
+                  <h1 className="Login-introduction">
+                    Se connecter
+                  </h1>
+                  <h2 className="Login-subtitle">
+                    Entrez vos identifiants
+                  </h2>
+              </div>
+              <div className="Login-form-content">
+                  <div style={{fontSize: "20px"}} className="login-form">
+                      <Grid container spacing={1} alignItems="flex-end" className="form-input" style={{fontSize: "20px"}}>
+                          <Grid item>
+                            <TextField id="input-with-icon-grid" label="Email" onChange={this.handleChange} name="email"/>
+                          </Grid>
+                      </Grid>
+                      <Grid container spacing={1} alignItems="flex-end" className="form-input">
+                          <Grid item>
+                            <TextField id="input-with-icon-grid" label="Password" onChange={this.handleChange} type="password" name="password" className="form-label"/>
+                          </Grid>
+                      </Grid>
+                      <div className="submit-button">
+                          <Button variant="outlined" size="large" color="primary" onClick={this.handleSubmit} className="submit-button">
+                            submit
+                          </Button>
+                      </div>
+                      { this.props.loading === true &&
+                          <CircularProgress disableShrink />
+                      }
+                  </div>
+              </div>
+          </div>
+      </section>
     )
   }
 }
@@ -43,7 +79,8 @@ class Login extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    token: state.authentication.token
+    token: state.authentication.token,
+    loading: state.authentication.loading
   }
 }
 

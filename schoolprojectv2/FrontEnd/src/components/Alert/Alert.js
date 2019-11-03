@@ -10,17 +10,42 @@ const styles = {}
 
 class Alert extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      isOpen: false
+    };
+    this.handleOpen = this.handleOpen.bind(this);
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.message !== this.props.message){
+      this.handleOpen();
+    }
+  }
+
+  handleOpen(){
+    console.log("RESETING TO FALSE")
+    this.setState({isOpen: true});
+    setTimeout(() =>{
+      this.setState({isOpen: false})
+    }, 4000)
+  }
+
+
   render(){
+    console.log(this.state.isOpen);
     const { classes } = this.props;
-    console.log(this.props.loaded);
     return(
       <div className="Alert">
         { this.props.message !== undefined &&
           <Snackbar
+            open={this.state.isOpen}
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'left',
             }}
+            onClose={() => this.setState({isOpen: false})}
             autoHideDuration={2000}
             ContentProps={{
               'aria-describedby': 'message-id',

@@ -1,0 +1,50 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.Login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Login-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Login-text *{
+  margin-bottom: 15px;
+}
+
+.Login-introduction {
+  font-weight: 700;
+  font-size: 35px;
+  font-family: 'Ubuntu', sans-serif;
+  letter-spacing: 1px;
+  color: #000000d6;
+}
+
+.Login-subtitle {
+  font-weight: 400;
+  font-size: 25px;
+  letter-spacing: 1px;
+  color: #000000d6;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submit-button {
+  margin-top: 35px;
+}
