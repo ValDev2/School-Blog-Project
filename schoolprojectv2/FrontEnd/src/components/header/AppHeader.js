@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import AutoCompleteSearchBar from './AutoCompleteSearchBar.js';
 import { Link } from 'react-router-dom';
+import {authLogout} from '../../actions/authentication.js';
 
 
 //Material Ui Styling
@@ -25,12 +26,12 @@ class AppHeader extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogin: false,
       isOpen: false,
       searchingValue: "",
       notifsNumber: 0,
     }
     this.toogleIsOpen = this.toogleIsOpen.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   toogleIsOpen(){
@@ -39,52 +40,63 @@ class AppHeader extends Component {
     }))
   }
 
+  handleLogout(e){
+    this.props.authLogout();
+  }
+
   render(){
     const { classes } = this.props;
     return(
       <div className="AppHeader">
-        <nav className="UpperNavBar">
-          <div className="logo">
-            <Link to="/" className="AppHeader-logowordmark">Garry's</Link>
-          </div>
-          <div className="Appheader-metabar">
-            <ul className="Appheader-metabar-buttons">
-              <li className="metabar-button" id="metabar-search-icon">
-              { this.state.isOpen === true ? (
-                <div className="searching-content">
-                <i className="fas fa-search" onClick={this.toogleIsOpen}></i>
-                <AutoCompleteSearchBar />
+          <nav className="UpperNavBar">
+                <div className="logo">
+                  <Link to="/" className="AppHeader-logowordmark">Garry's</Link>
                 </div>
-              ) : (
-                <i className="fas fa-search" onClick={this.toogleIsOpen}></i>
-              )}
-              </li>
-              { this.state.isLogin ? (
-                <div>
-                  <li className="metabar-button" id="metabar-notification-icon">
-                    <i className="far fa-bell"></i>
-                  </li>
-                  <li className="metabar-button user-profile-icon" id="metabar-profile-icon">
-                    <div className="profile-rounded-icon"></div>
-                  </li>
+                <div className="Appheader-metabar">
+                    <ul className="Appheader-metabar-buttons">
+                        <li className="metabar-button" id="metabar-search-icon">
+                        { this.state.isOpen === true ? (
+                          <div className="searching-content">
+                          <i className="fas fa-search" onClick={this.toogleIsOpen}></i>
+                          <AutoCompleteSearchBar />
+                          </div>
+                        ) : (
+                          <i className="fas fa-search" onClick={this.toogleIsOpen}></i>
+                        )}
+                        </li>
+                        { this.props.isAuthenticated ? (
+                          <div className="metabar-buttons-authentication">
+                              <li className="metabar-button" id="metabar-notification-icon">
+                                  <i className="far fa-bell"></i>
+                              </li>
+                              <Link to="/" onClick={this.handleLogout}>
+                                  <li className="metabar-button user-profile-icon" id="sign-in">
+                                      <Button variant="outlined" color="primary" className={classes.button}>
+                                        Log out
+                                      </Button>
+                                  </li>
+                              </Link>
+                          </div>
+                        ) : (
+                          <Link to="/authentication/login">
+                              <li className="metabar-button user-profile-icon" id="sign-in">
+                                  <Button variant="outlined" color="primary" className={classes.button}>
+                                    Sign In
+                                  </Button>
+                              </li>
+                          </Link>
+                        )
+                        }
+                    </ul>
                 </div>
-              ) : (
-                <Link to="/authentication/login">
-                  <li className="metabar-button user-profile-icon" id="sign-in">
-                    <Button variant="outlined" color="primary" className={classes.button}>
-                      Sign In
-                    </Button>
-                  </li>
-                </Link>
-              )
-              }
-            </ul>
-          </div>
-        </nav>
+          </nav>
       </div>
     )
   }
 }
 
 
-export default withStyles(styles)(AppHeader);
+
+
+
+export default connect(null, {authLogout})(withStyles(styles)(AppHeader));

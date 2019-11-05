@@ -35,6 +35,13 @@ export function authenticationReducer(state = initialState, action){
         error_msg: error_msg,
         error_status: action.payload.status
       }
+    case AUTH_LOGOUT:
+      return {
+        loading: false,
+        token: null,
+        error: null,
+        error_status: null
+      }
     default:
       return state
 

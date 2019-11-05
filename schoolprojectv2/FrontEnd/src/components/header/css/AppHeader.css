@@ -53,4 +53,8 @@ a {
   text-decoration: none;
 }
 
+
+.metabar-buttons-authentication {
+  display: flex; 
+}
 /* Suggestion Styling */

@@ -36,6 +36,16 @@ export const logout = () => {
 }
 
 
+export const authLogout = () => dispatch => {
+  axios.post('http://127.0.0.1:8000/rest-auth/logout/',{})
+  .then( res => {
+    dispatch(logout());
+    console.log("LOGOUT !!!!!!!")
+  })
+  .catch(err => console.log(err))
+}
+
+
 export const checkAuthTimeOut = expiration_time => dispatch => {
   return setTimeout(()=> {
     dispatch(logout());
@@ -50,9 +60,7 @@ export const authLogin = (email, password) => dispatch => {
       "password": password
   })
   .then( res => {
-    console.log("HEY RESPONSE ! ")
-    console.log(res);
-    const token = res
+    const token = res.data
     const expiration_time = new Date(new Date().getTime() + 3600 * 1000);
     window.localStorage.setItem('token', token);
     window.localStorage.setItem('expiration_time', expiration_time);

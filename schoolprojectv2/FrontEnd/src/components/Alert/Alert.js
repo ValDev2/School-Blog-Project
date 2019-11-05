@@ -38,7 +38,7 @@ class Alert extends Component {
     const { classes } = this.props;
     return(
       <div className="Alert">
-        { this.props.message !== undefined &&
+        { this.props.message !== null &&
           <Snackbar
             open={this.state.isOpen}
             anchorOrigin={{
@@ -71,9 +71,11 @@ class Alert extends Component {
 
 
 const mapStateToProps = state => {
-  return {
-    message: state.authentication.error_msg[0],
-    status: state.authentication.error_status,
+  if (state.authentication.error !== null){
+    return {
+      message: state.authentication.error_msg[0],
+      status: state.authentication.error_status,
+    }
   }
 }
 
