@@ -16,12 +16,10 @@ export function authenticationReducer(state = initialState, action){
         loading: true
       }
     case AUTH_SUCESS:
-      console.log(action.token);
-      console.log(action.loading);
       return {
         ...state,
         error: null,
-        token: action.token,
+        token: action.token.key,
         loading: false
       }
     case AUTH_FAIL:

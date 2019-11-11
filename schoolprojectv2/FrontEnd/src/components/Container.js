@@ -12,6 +12,8 @@ import { store } from '../store.js';
 import { BrowserRouter } from "react-router-dom";
 import Login from './Authentication/Login.js';
 import Alert from './Alert/Alert.js';
+import NewArticle from './NewArticle/NewArticle.js';
+
 
 class Container extends Component {
 
@@ -31,6 +33,10 @@ class Container extends Component {
                 <Route exact
                        path="/:category"
                        render={routerProps => <HomePageStream {...routerProps} {...this.props}/>}
+                />
+                <Route exact
+                       path="/article/create"
+                       render={ routerProps =>  <NewArticle {...routerProps} {...this.props} />}
                 />
                 <Route exact
                        path="/article/:slug"

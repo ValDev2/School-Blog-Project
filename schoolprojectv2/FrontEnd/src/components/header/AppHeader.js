@@ -66,6 +66,11 @@ class AppHeader extends Component {
                         </li>
                         { this.props.isAuthenticated ? (
                           <div className="metabar-buttons-authentication">
+                              <Link to="/article/create">
+                                <li className="metabar-button add-post-icon" id="add">
+                                    <i className="fas fa-plus"></i>
+                                </li>
+                              </Link>
                               <li className="metabar-button" id="metabar-notification-icon">
                                   <i className="far fa-bell"></i>
                               </li>
