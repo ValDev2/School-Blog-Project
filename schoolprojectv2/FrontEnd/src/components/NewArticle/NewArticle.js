@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import BasicArticleCreationForm from './BasicArticleCreationForm.js';
 
 class NewArticle extends Component{
   constructor(props){

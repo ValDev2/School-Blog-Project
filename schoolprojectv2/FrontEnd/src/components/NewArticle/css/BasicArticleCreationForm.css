@@ -1,0 +1,15 @@
+.BasicArticleCreationForm form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.BasicArticleCreationForm {
+  display: flex;
+  box-sizing: border-box;
+  margin: 15px auto 0 auto;
+  max-width: 1280px;
+  width: 100%;
+  justify-content: center;
+}
