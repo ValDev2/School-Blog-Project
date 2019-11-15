@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import './css/BasicArticleCreationForm.css';
 
 
 const styles = {
   TextField: {
     width: "700px",
-    height: "500px",
-    padding: "5px"
+    padding: "5px",
+    marginBottom: "20px"
   },
   Title: {
     padding: "5px",
@@ -21,10 +22,22 @@ const styles = {
 
 
 class BasicArticleCreationForm extends Component {
+
+  constructor(props){
+    super(props),
+    this.state = {
+
+    };
+    this.continue = this.continue.bind(this);
+  }
+
+  continue(e){
+    e.preventDefault();
+    this.props.nextStep();
+  }
+
   render(){
-
     const { classes } = this.props;
-
     return(
         <div className="BasicArticleCreationForm">
             <form noValidate autoComplete="off">
@@ -45,9 +58,13 @@ class BasicArticleCreationForm extends Component {
                       margin="normal"
                       multiline
                       rows="8"
-                      rowsMax="100"
                       className={classes.TextField}
                     />
+                    <div className="nextStep">
+                        <Button variant="outlined" className={classes.button} onClick={this.continue}>
+                            Next
+                        </Button>
+                    </div>
                 </div>
             </form>
         </div>

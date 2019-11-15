@@ -7,9 +7,16 @@
 
 .BasicArticleCreationForm {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   margin: 15px auto 0 auto;
   max-width: 1280px;
   width: 100%;
+  justify-content: center;
+}
+
+.nextStep {
+  display: flex;
   justify-content: center;
 }

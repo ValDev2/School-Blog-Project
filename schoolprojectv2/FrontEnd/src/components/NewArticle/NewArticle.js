@@ -15,18 +15,17 @@ class NewArticle extends Component{
   }
 
   componentDidMount(){
-    //do things
+    alert('Step : ' + this.state.step);
   }
 
-
   nextStep(e){
-    e.preventDefault();
-    this.setState(st => {step: st.step++});
+    alert('pressed ! ')
+    this.setState({step: this.state.step+1});
+    alert(this.state.step);
   }
 
   previousStep(e){
-    e.preventDefault;
-    this.setState(st => {step: st.step--});
+    this.setState({step: this.state.step-1});
   }
 
   handleChange(e){
@@ -34,9 +33,9 @@ class NewArticle extends Component{
   }
 
   render(){
+    console.log("step : " + this.state.step);
       switch(this.state.step){
           case 1:
-              console.log("yes")
               return(
                   <BasicArticleCreationForm
                     nextStep={this.nextStep}
@@ -45,6 +44,7 @@ class NewArticle extends Component{
                   />
             )
           case 2:
+              alert('EXTRAS ! ')
               return(
                   <h1>Extra Infos ! </h1>
               )
