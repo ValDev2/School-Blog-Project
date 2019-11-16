@@ -1,0 +1,36 @@
+.ExtraInfosArticleCreationForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1032px;
+  margin: 15px auto;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  padding: 2em 20px;
+}
+
+.NewArticlePreviewText {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px
+}
+
+.NewarticlePreview h2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+}
+
+.NewArticlePreviewText * {
+  margin-top: 10px;
+}
+
+.NewArticlePreviewNote {
+  width: 80%;
+  margin-top: 30px;
+  line-height: 1.5em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.NewArticleTags p {
+  margin-bottom: 20px;
+}

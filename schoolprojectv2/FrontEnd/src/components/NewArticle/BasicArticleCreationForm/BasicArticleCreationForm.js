@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import './css/BasicArticleCreationForm.css';
 
-
 const styles = {
   TextField: {
     width: "700px",
@@ -19,15 +18,11 @@ const styles = {
   },
 };
 
-
-
 class BasicArticleCreationForm extends Component {
 
   constructor(props){
     super(props),
-    this.state = {
-
-    };
+    this.state = {};
     this.continue = this.continue.bind(this);
   }
 

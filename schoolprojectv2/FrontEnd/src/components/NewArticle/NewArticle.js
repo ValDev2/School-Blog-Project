@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import BasicArticleCreationForm from './BasicArticleCreationForm.js';
+import BasicArticleCreationForm from './BasicArticleCreationForm/BasicArticleCreationForm.js';
+import ExtraInfosArticleCreationForm from './ExtraInfosArticleCreationForm/ExtraInfosArticleCreationForm.js';
+
+
 
 class NewArticle extends Component{
   constructor(props){
@@ -15,13 +18,11 @@ class NewArticle extends Component{
   }
 
   componentDidMount(){
-    alert('Step : ' + this.state.step);
+    console.log("STEP : " + this.state.step);
   }
 
   nextStep(e){
-    alert('pressed ! ')
     this.setState({step: this.state.step+1});
-    alert(this.state.step);
   }
 
   previousStep(e){
@@ -44,9 +45,12 @@ class NewArticle extends Component{
                   />
             )
           case 2:
-              alert('EXTRAS ! ')
               return(
-                  <h1>Extra Infos ! </h1>
+                  <ExtraInfosArticleCreationForm
+                    nextStep={this.nextStep}
+                    previousStep={this.previousStep}
+                    handleChange={this.handleChange}
+                  />
               )
           case 3:
               return(
