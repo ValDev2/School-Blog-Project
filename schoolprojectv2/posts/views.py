@@ -19,7 +19,7 @@ from django.contrib.contenttypes.models import ContentType
 #Get all existing posts : Create new post / see all posts
 class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
-    permission_classes = [isAuthenticatedOrReadOnly]
+    permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
         queryset = Post.objects.all()

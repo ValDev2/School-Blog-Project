@@ -20,21 +20,41 @@ const styles = {
     fontWeight: "700",
     width: "700px",
   },
-  previewDescription: {
-    padding: "5px",
+  tagInput: {
+    fontSize: "18px",
+    marginBottom: "15px"
+  },
+  publishBtn: {
+    backgroundColor: "#00aeab",
+    color: "#fff",
+    border: "none",
+    "&:hover": {
+        backgroundColor: "#00aeab"
+    }
+  },
+  BackBtn: {
+
   }
 };
+
+
 
 class ExtraInfosArticleCreationForm extends Component {
   constructor(props){
     super(props),
     this.state = {};
     this.continue = this.continue.bind(this);
+    this.back = this.back.bind(this);
   }
 
   continue(e){
     e.preventDefault();
     this.props.nextStep();
+  }
+
+  back(e){
+    e.preventDefault();
+    this.props.previousStep();
   }
 
   render(){
@@ -58,7 +78,6 @@ class ExtraInfosArticleCreationForm extends Component {
                           id="standard-basic"
                           label=""
                           margin="normal"
-                          className={classes.previewDescription}
                           InputLabelProps={{style: {fontSize: 18}}}
                           inputProps={{style: {fontSize: 25, color: "#8f8f8f", marginTop: 10, marginBottom: 10 }}}
                         />
@@ -71,21 +90,33 @@ class ExtraInfosArticleCreationForm extends Component {
             <div class="NewArticleTags">
                 <p><strong>Tags : </strong>Ajoutez jusqu'à 5 tags pour renseigner la communauté du contenu de votre site</p>
                 <FormControl fullWidth className={classes.margin} variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-amount">Tags</InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-amount"
-                      labelWidth={60}
+                    <TextField
+                      id="outlined-full-width"
+                      label="Tags"
+                      style={{ margin: 8 }}
+                      fullWidth
+                      margin="normal"
+                      InputLabelProps={{
+                        shrink: true,
+                        color: "red"
+                      }}
+                      inputProps={{className: classes.tagInput}}
+                      variant="outlined"
                     />
                 </FormControl>
             </div>
             <div class="NewArticleReadyToPublish">
-                <p>Prêt à Publier votre Article à la communauté ?</p>
+                <p><strong>Prêt à Publier votre Article à la communauté ?</strong></p>
                 <ul>
                     <div class="NewArticlePublishBtn">
-                        Publier
+                        <Button color="primary" className={classes.publishBtn} onClick={this.continue}>
+                            Publier
+                        </Button>
                     </div>
-                    <div class="NewArticlePublishLaterBtn">
-                        Programmer pour plus tard
+                    <div class="NewArticlePublishBtn">
+                        <Button variant="outlined" className={classes.button} onClick={this.back}>
+                            Next
+                        </Button>
                     </div>
                 </ul>
             </div>
